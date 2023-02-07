@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t saurabhj87/jenkins-docker-hub .'
+        sh '/usr/bin/docker build -t saurabhj87/jenkins-docker-hub .'
       }
     }
     stage('Login') {
@@ -19,13 +19,13 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'docker push saurabhj87/jenkins-docker-hub'
+        sh '/usr/bin/docker push saurabhj87/jenkins-docker-hub'
       }
     }
   }
   post {
     always {
-      sh 'docker logout'
+      sh '/usr/bin/docker logout'
     }
   }
 }
